@@ -1,4 +1,10 @@
-# orders
+# Orders Service
+
+This repository contains a Kubernetes manifest for deploying an orders service using a Kubernetes Service.
+This Service exposes the orders application, targeting the pods labeled with app: orders-deployment, on port 80.
+This repository contains a Kubernetes manifest for deploying an orders application using a Kubernetes Deployment.
+
+
 ### building,
 ### running,
 ### pushing,
