@@ -1,4 +1,7 @@
-# orders
+# Orders service
+- the pipeline will be triggered through a webhook on code commit/push
+- the pipeline will use the Dockerfile to build a container image which then will be deployed to the EKS (k8s on AWS) clusteservice
+This repository contains Kubernetes manifests and a Jenkins pipeline for
 ### building,
 ### running,
 ### pushing,
@@ -6,10 +9,10 @@ and deploying the carts service.
 
 ## Service Manifest
 
-The Orders service is defined in the following Kubernetes manifest file:
-This manifest describes a Kubernetes Service named orders that selects pods labeled with app:
+The carts service is defined in the following Kubernetes manifest file:
+This manifest describes a Kubernetes Service named carts that selects pods labeled with app:
 
-## orders-deployment.
+## carts-deployment.
 
 The service is exposed on port 80 using the TCP protocol.
 
@@ -18,18 +21,18 @@ The Jenkins pipeline automates the following stages:
 
 ## Build
 
-Builds the Docker image for the orders service.
+Builds the Docker image for the carts service.
 Uses Docker commands to build the image with the specified tag.
 
 ## Run
 
 Creates a Docker network for the build.
-Runs the orders service in a detached mode with the Docker image.
+Runs the carts service in a detached mode with the Docker image.
 Stops the running service and removes the Docker network.
 
 ## Push
 
-Tags the Docker image for the orders service.
+Tags the Docker image for the carts service.
 Logs in to Docker Hub using provided credentials.
 Pushes the Docker image to the Docker Hub repository with both the specified tag and the "latest" tag.
 
@@ -41,6 +44,7 @@ Applies Kubernetes manifests located in the ./manifests directory to the specifi
 The AWS credentials, EKS cluster information, and Kubernetes configuration are retrieved from Jenkins credentials.
 
 ## Pipeline Environment Variables
+
 The pipeline uses the following environment variables:
 ```
   DOCKER_ID: Docker Hub username.
